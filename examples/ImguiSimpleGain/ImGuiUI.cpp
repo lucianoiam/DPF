@@ -16,6 +16,8 @@
 
 #include "Application.hpp"
 
+#include "../dgl/Window.hpp"
+
 #include <GL/glew.h>
 
 #include "ImGuiUI.hpp"
@@ -160,6 +162,10 @@ bool ImGuiUI::onSpecial(const SpecialEvent& event)
 
 bool ImGuiUI::onMouse(const MouseEvent& event)
 {
+    if (event.press) {
+        getWindow().focus();
+    }
+
     ImGui::SetCurrentContext(fImpl->fContext);
     ImGuiIO &io = ImGui::GetIO();
 
